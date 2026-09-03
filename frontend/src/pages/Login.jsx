@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 // Authentication - keep for later
-// import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";npm
 // import { loginService } from "../services/auth.services";
 
 const Login = () => {
