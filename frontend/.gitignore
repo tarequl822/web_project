@@ -1,0 +1,348 @@
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+.pnpm-store/
+.yarn/
+yarn-error.log
+yarn-debug.log
+package-lock.json
+pnpm-lock.yaml
+
+# ============================================
+# BUILD OUTPUTS
+# ============================================
+/dist
+/build
+/build-ssr
+/*.local
+*.tsbuildinfo
+
+# ============================================
+# ENVIRONMENT VARIABLES
+# ============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+.env.dev
+.env.staging
+.env.production
+
+# ============================================
+# IDE AND EDITOR FILES
+# ============================================
+# VS Code
+.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.history/
+*.code-workspace
+
+# WebStorm/IntelliJ
+.idea/
+*.iml
+*.iws
+.idea_modules/
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+*.un~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# ============================================
+# OPERATING SYSTEM FILES
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# LOGS
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+vite-log.txt
+
+# ============================================
+# TESTING
+# ============================================
+/coverage
+/.nyc_output
+/test-results
+/e2e-results
+/playwright-report
+/testem.log
+*.test.js
+*.spec.js
+
+# ============================================
+# CACHE FILES
+# ============================================
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.nuxt/
+.gatsby/
+.storybook/
+storybook-static/
+.vercel/
+.netlify/
+
+# ============================================
+# TEMPORARY FILES
+# ============================================
+*.tmp
+*.temp
+*.bak
+*.old
+*.orig
+*.rej
+.DS_Store
+.swp
+.swo
+*~
+
+# ============================================
+# CONFIGURATION FILES (Optional - uncomment if needed)
+# ============================================
+# .prettierrc
+# .eslintrc
+# .stylelintrc
+# .babelrc
+# .editorconfig
+# postcss.config.js
+# tailwind.config.js
+# vite.config.js
+
+# ============================================
+# MISC
+# ============================================
+# Debug files
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostics
+*.log
+*.tmp
+
+# Coverage directory used by tools like istanbul
+coverage/
+.nyc_output
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing
+.vscode-test
+
+# ============================================
+# PROJECT SPECIFIC
+# ============================================
+# Firebase
+firebase-debug.log
+firebase-debug.*.log
+
+# Firebase cache
+.firebase/
+
+# Google Cloud
+.gcloud/
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite specific
+.vite
+
+# ESLint
+.eslintcache
+
+# Stylelint
+.stylelintcache
+
+# Prettier
+.prettiercache
+
+# ============================================
+# DOCKER
+# ============================================
+docker-compose.override.yml
+docker-compose.*.yml
+Dockerfile.*
+.dockerignore
+
+# ============================================
+# SECURITY
+# ============================================
+# SSL certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.cert
+
+# AWS
+.aws/
+
+# SSH keys
+*.pem
+*.key
+*.pub
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# ============================================
+# DATABASES
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+*.fdb
+
+# ============================================
+# BACKUP FILES
+# ============================================
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+
+# ============================================
+# COMPRESSED FILES
+# ============================================
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.bz2
+*.tgz
+
+# ============================================
+# CONFIGURATION WITH SENSITIVE DATA
+# ============================================
+# Secrets files
+secrets.json
+secrets.yaml
+secrets.yml
+*.secret
+*.private
+
+# ============================================
+# VIRTUAL ENVIRONMENTS
+# ============================================
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# ============================================
+# MISCELLANEOUS
+# ============================================
+# Temporary folders
+tmp/
+temp/
+tempfiles/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.swo
+*.swp
+*.~*
+*.un~
+
+# ============================================
+# OPTIONAL (Uncomment as needed)
+# ============================================
+# .eslintcache
+# .stylelintcache
+# .prettiercache
+# .cache/
+# .parcel-cache/
+# .next/
+# .nuxt/
+# .gatsby/
+# .storybook/
+# storybook-static/
+# .vercel/
+# .netlify/
+# .firebase/
+# .cloud/
