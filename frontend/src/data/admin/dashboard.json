@@ -1,0 +1,139 @@
+{
+  "stats": [
+    {
+      "id": 1,
+      "title": "Total Users",
+      "value": "12,450",
+      "change": "+12%",
+      "icon": "users",
+      "type": "primary"
+    },
+    {
+      "id": 2,
+      "title": "Active Dietitians",
+      "value": "482",
+      "change": "+5%",
+      "icon": "dietitian",
+      "type": "secondary"
+    },
+    {
+      "id": 3,
+      "title": "Meals Logged",
+      "value": "85,230",
+      "change": "+18%",
+      "icon": "meal",
+      "type": "tertiary"
+    },
+    {
+      "id": 4,
+      "title": "Reports Generated",
+      "value": "4,120",
+      "change": "+7%",
+      "icon": "reports",
+      "type": "primary"
+    }
+  ],
+  "userGrowth": [
+    {
+      "month": "Jan",
+      "value": 35
+    },
+    {
+      "month": "Mar",
+      "value": 48
+    },
+    {
+      "month": "May",
+      "value": 52
+    },
+    {
+      "month": "Jul",
+      "value": 72
+    },
+    {
+      "month": "Sep",
+      "value": 82
+    },
+    {
+      "month": "Nov",
+      "value": 90
+    }
+  ],
+  "activeSessions": [
+    {
+      "day": "M",
+      "value": 40
+    },
+    {
+      "day": "T",
+      "value": 65
+    },
+    {
+      "day": "W",
+      "value": 85
+    },
+    {
+      "day": "T",
+      "value": 55
+    },
+    {
+      "day": "F",
+      "value": 95
+    },
+    {
+      "day": "S",
+      "value": 70
+    },
+    {
+      "day": "S",
+      "value": 80
+    }
+  ],
+  "recentActivity": [
+    {
+      "id": 1,
+      "title": "New Dietitian Registered",
+      "description": "Dr. Sarah Jenkins • Medical Board Verified",
+      "time": "2m ago",
+      "icon": "person",
+      "type": "secondary"
+    },
+    {
+      "id": 2,
+      "title": "System Update Completed",
+      "description": "Version 4.2.1-Stable • Database migration successful",
+      "time": "1h ago",
+      "icon": "update",
+      "type": "primary"
+    },
+    {
+      "id": 3,
+      "title": "Large Meal Plan Dataset Exported",
+      "description": "Requested by Internal Audit Team • 42,000 records",
+      "time": "3h ago",
+      "icon": "export",
+      "type": "tertiary"
+    },
+    {
+      "id": 4,
+      "title": "New Security Protocol Implemented",
+      "description": "MFA mandatory for all Dietitian accounts",
+      "time": "5h ago",
+      "icon": "security",
+      "type": "error"
+    },
+    {
+      "id": 5,
+      "title": "User Benchmark Goal Reached",
+      "description": "10,000+ daily active users exceeded",
+      "time": "Yesterday",
+      "icon": "goal",
+      "type": "secondary"
+    }
+  ],
+  "systemHealth": {
+    "uptime": "99.9%",
+    "serverLoad": 32,
+    "databaseLatency": 12
+  }
+}
