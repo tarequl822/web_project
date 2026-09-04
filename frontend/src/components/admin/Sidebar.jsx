@@ -54,7 +54,7 @@ const Sidebar = () => {
   };
 
   return (
-    <aside className="fixed left-0 top-0 z-50 flex h-screen w-64 flex-col bg-[#eef0fa]">
+    <aside className="fixed left-0 top-0 z-50 flex h-screen w-[240px] flex-col bg-[#eef0fa]">
       {/* Brand */}
       <div className="px-6 py-6">
         <h1 className="text-[30px] font-bold leading-none text-[#0058be]">

@@ -6,7 +6,6 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaClock,
-  FaCog,
   FaFileAlt,
   FaFilter,
   FaGraduationCap,
@@ -15,16 +14,11 @@ import {
   FaSearch,
   FaShieldAlt,
   FaSun,
-  FaThLarge,
   FaTimes,
-  FaUtensils,
-  FaUsers,
-  FaUserMd,
-  FaChartBar,
-  FaDownload,
   FaSpinner,
   FaClipboardList,
 } from "react-icons/fa";
+import Sidebar from "../../components/admin/Sidebar";
 
 const PAGE_SIZE = 3;
 
@@ -389,98 +383,6 @@ function Dietitians() {
     setSelectedApplicant(application);
   };
 
-  // ----------------------------------------------------
-  // GENERATE REPORT
-  // ----------------------------------------------------
-
-  const generateReport = () => {
-    const headers = [
-      "ID",
-      "Name",
-      "Role",
-      "Specialty",
-      "Education",
-      "Experience",
-      "Applied",
-    ];
-
-    const rows = applications.map((item) => [
-      item.id,
-      item.name,
-      item.role,
-      item.specialty,
-      item.education,
-      item.experience,
-      item.applied,
-    ]);
-
-    const csv = [
-      headers,
-      ...rows,
-    ]
-      .map((row) =>
-        row
-          .map((value) =>
-            `"${String(value).replace(/"/g, '""')}"`
-          )
-          .join(",")
-      )
-      .join("\n");
-
-    const blob = new Blob([csv], {
-      type: "text/csv;charset=utf-8;",
-    });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-    link.download = "dietitian-applications-report.csv";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-    URL.revokeObjectURL(url);
-
-    showNotification("Report generated successfully.");
-  };
-
-  // ----------------------------------------------------
-  // SIDEBAR
-  // ----------------------------------------------------
-
-  const menuItems = [
-    {
-      name: "Dashboard",
-      icon: <FaThLarge />,
-    },
-    {
-      name: "Users",
-      icon: <FaUsers />,
-    },
-    {
-      name: "Dietitians",
-      icon: <FaUserMd />,
-      active: true,
-    },
-    {
-      name: "Foods",
-      icon: <FaUtensils />,
-    },
-    {
-      name: "Reports",
-      icon: <FaChartBar />,
-    },
-    {
-      name: "Settings",
-      icon: <FaCog />,
-    },
-  ];
-
   return (
     <div
       className="
@@ -492,120 +394,7 @@ function Dietitians() {
         transition-colors
       "
     >
-      {/* =====================================================
-          SIDEBAR
-      ====================================================== */}
-
-      <aside
-        className="
-          fixed
-          left-0
-          top-0
-          z-40
-          h-screen
-          w-[240px]
-          border-r
-          border-[#d9dce8]
-          bg-[#eef0fa]
-          dark:border-[#30333d]
-          dark:bg-[#1b1d24]
-          flex
-          flex-col
-        "
-      >
-        {/* Logo */}
-
-        <div className="px-6 pt-6 pb-7">
-          <h1 className="text-[28px] font-bold text-[#0565c9]">
-            HealthAdmin
-          </h1>
-
-          <p className="mt-1 text-[12px] font-semibold tracking-wide text-[#4d5261] dark:text-gray-400">
-            Clinical Systems
-          </p>
-        </div>
-
-        {/* Navigation */}
-
-        <nav className="flex-1 px-0">
-          {menuItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => {
-                if (!item.active) {
-                  showNotification(
-                    `${item.name} page navigation`
-                  );
-                }
-              }}
-              className={`
-                relative
-                flex
-                w-full
-                items-center
-                gap-4
-                px-5
-                py-[15px]
-                text-left
-                text-[16px]
-                transition
-                ${
-                  item.active
-                    ? "text-[#0565c9] bg-[#e4e8f5] dark:bg-[#252a34]"
-                    : "text-[#505564] hover:bg-[#e5e7f2] dark:text-gray-300 dark:hover:bg-[#252832]"
-                }
-              `}
-            >
-              {item.active && (
-                <span
-                  className="
-                    absolute
-                    right-0
-                    top-0
-                    h-full
-                    w-[4px]
-                    bg-[#0565c9]
-                  "
-                />
-              )}
-
-              <span className="w-5 text-[19px]">
-                {item.icon}
-              </span>
-
-              <span>{item.name}</span>
-            </button>
-          ))}
-        </nav>
-
-        {/* Generate Report */}
-
-        <div className="p-6">
-          <button
-            onClick={generateReport}
-            className="
-              flex
-              w-full
-              items-center
-              justify-center
-              gap-2
-              rounded-[12px]
-              bg-[#0874dc]
-              py-3
-              text-[14px]
-              font-semibold
-              text-white
-              shadow-sm
-              transition
-              hover:bg-[#0565c9]
-            "
-          >
-            <FaDownload />
-
-            Generate Report
-          </button>
-        </div>
-      </aside>
+      <Sidebar />
 
       {/* =====================================================
           MAIN

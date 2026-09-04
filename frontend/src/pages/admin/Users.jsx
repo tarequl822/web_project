@@ -19,7 +19,6 @@ import {
   FaFilter,
   FaFileExport,
 } from "react-icons/fa";
-import DashboardLayout from "../../layouts/admin/DashboardLayout";
 import Navbar from "../../components/admin/Navbar";
 import Sidebar from "../../components/admin/Sidebar";
 
@@ -28,8 +27,9 @@ const Users = () => {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [roleFilter, setRoleFilter] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const users = [
+  const [users, setUsers] = useState([
     {
       id: 1,
       name: "John Anderson",
@@ -126,7 +126,7 @@ const Users = () => {
       joined: "Aug 02, 2026",
       meals: 18,
     },
-  ];
+  ]);
 
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
@@ -143,7 +143,76 @@ const Users = () => {
 
       return matchesSearch && matchesStatus && matchesRole;
     });
-  }, [search, statusFilter, roleFilter]);
+  }, [users, search, statusFilter, roleFilter]);
+
+  const exportUsers = () => {
+    const headers = ["ID", "Name", "Email", "Phone", "Age", "Gender", "Role", "Status", "Joined", "Meals"];
+    const rows = filteredUsers.map((user) => [
+      user.id,
+      user.name,
+      user.email,
+      user.phone,
+      user.age,
+      user.gender,
+      user.role,
+      user.status,
+      user.joined,
+      user.meals,
+    ]);
+    const csv = [headers, ...rows]
+      .map((row) => row.map((value) => `"${String(value).replace(/"/g, '""')}"`).join(","))
+      .join("\n");
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "healthadmin-users.csv";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const addUser = () => {
+    const name = window.prompt("User name");
+    const email = window.prompt("User email");
+
+    if (!name?.trim() || !email?.trim()) return;
+
+    setUsers((previousUsers) => [
+      ...previousUsers,
+      {
+        id: Math.max(...previousUsers.map((user) => user.id), 0) + 1,
+        name: name.trim(),
+        email: email.trim(),
+        phone: "Not provided",
+        age: 0,
+        gender: "Not provided",
+        role: "User",
+        status: "Active",
+        joined: "Today",
+        meals: 0,
+      },
+    ]);
+    setCurrentPage(1);
+  };
+
+  const viewUser = (user) => {
+    window.alert(`${user.name}\n${user.email}\n${user.phone}\nStatus: ${user.status}`);
+  };
+
+  const editUser = (user) => {
+    const name = window.prompt("Update user name", user.name);
+    if (!name?.trim()) return;
+
+    setUsers((previousUsers) =>
+      previousUsers.map((item) =>
+        item.id === user.id ? { ...item, name: name.trim() } : item
+      )
+    );
+  };
+
+  const deleteUser = (user) => {
+    if (!window.confirm(`Delete ${user.name}?`)) return;
+    setUsers((previousUsers) => previousUsers.filter((item) => item.id !== user.id));
+  };
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -264,7 +333,7 @@ const Users = () => {
       </aside>
 
       {/* ================= MAIN ================= */}
-      <main className="ml-64 min-h-screen">
+      <main className="ml-[240px] min-h-screen">
         {/* ================= TOP NAV ================= */}
         <header
           className={`hidden sticky top-0 z-40 flex h-[72px] items-center justify-between border-b px-8 ${
@@ -337,6 +406,8 @@ const Users = () => {
 
             <div className="flex gap-3">
               <button
+                type="button"
+                onClick={exportUsers}
                 className={`flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${
                   darkMode
                     ? "border-gray-700 bg-gray-900 hover:bg-gray-800"
@@ -347,10 +418,7 @@ const Users = () => {
                 Export
               </button>
 
-              <button className="flex items-center gap-2 rounded-xl bg-[#0058be] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#004395]">
-                <FaPlus />
-                Add User
-              </button>
+
             </div>
           </section>
 
@@ -594,21 +662,27 @@ const Users = () => {
                         <td className="px-6 py-4">
                           <div className="flex items-center justify-center gap-2">
                             <button
+                              type="button"
                               title="View User"
+                              onClick={() => viewUser(user)}
                               className="rounded-lg p-2 text-gray-500 transition hover:bg-[#d8e2ff] hover:text-[#0058be]"
                             >
                               <FaEye size={14} />
                             </button>
 
                             <button
+                              type="button"
                               title="Edit User"
+                              onClick={() => editUser(user)}
                               className="rounded-lg p-2 text-gray-500 transition hover:bg-[#d8e2ff] hover:text-[#0058be]"
                             >
                               <FaEdit size={14} />
                             </button>
 
                             <button
+                              type="button"
                               title="Delete User"
+                              onClick={() => deleteUser(user)}
                               className="rounded-lg p-2 text-gray-500 transition hover:bg-red-100 hover:text-red-600"
                             >
                               <FaTrash size={14} />
@@ -651,11 +725,14 @@ const Users = () => {
               }`}
             >
               <p className="text-xs text-gray-500">
-                Showing 1–8 of 12,450 users
+                Page {currentPage} · Showing {filteredUsers.length} of {users.length} users
               </p>
 
               <div className="flex items-center gap-2">
                 <button
+                  type="button"
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
                   className={`flex h-8 w-8 items-center justify-center rounded-lg border ${
                     darkMode
                       ? "border-gray-700 hover:bg-gray-800"
@@ -665,25 +742,51 @@ const Users = () => {
                   <FaChevronLeft size={11} />
                 </button>
 
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0058be] text-xs font-semibold text-white">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(1)}
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-semibold ${
+                    currentPage === 1 ? "bg-[#0058be] text-white" : "hover:bg-gray-100"
+                  }`}
+                >
                   1
                 </button>
 
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium hover:bg-gray-100">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(2)}
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium ${
+                    currentPage === 2 ? "bg-[#0058be] text-white" : "hover:bg-gray-100"
+                  }`}
+                >
                   2
                 </button>
 
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium hover:bg-gray-100">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(3)}
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium ${
+                    currentPage === 3 ? "bg-[#0058be] text-white" : "hover:bg-gray-100"
+                  }`}
+                >
                   3
                 </button>
 
                 <span className="px-1 text-gray-400">...</span>
 
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium hover:bg-gray-100">
+                <button
+                  type="button"
+                  onClick={() => setCurrentPage(20)}
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-medium ${
+                    currentPage === 20 ? "bg-[#0058be] text-white" : "hover:bg-gray-100"
+                  }`}
+                >
                   20
                 </button>
 
                 <button
+                  type="button"
+                  onClick={() => setCurrentPage((page) => Math.min(20, page + 1))}
                   className={`flex h-8 w-8 items-center justify-center rounded-lg border ${
                     darkMode
                       ? "border-gray-700 hover:bg-gray-800"
