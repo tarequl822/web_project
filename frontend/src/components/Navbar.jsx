@@ -6,6 +6,7 @@ import { FiBell, FiSearch } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import { getNotifications } from "../services/notification.services";
+import logo from "../assets/images/logo.jpg";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -103,12 +104,10 @@ const Navbar = () => {
         {/* Brand */}
         <Link
           to="/"
-          className=" flex text-2xl font-bold text-primary dark:text-dark-primary"
+          className="flex items-center text-lg font-bold text-primary dark:text-dark-primary"
         >
-          <div className="bg-gradient-to-r from-primary to-secondary w-8 h-8 rounded-lg flex items-center justify-center mr-2">
-            <FaGraduationCap className="text-white text-lg" />
-          </div>
-          uniNexus
+          <img src={logo} alt="Smart Health and Diet Recommendation System" className="mr-2 h-9 w-9 rounded-lg object-cover" />
+          Smart Health &amp; Diet
         </Link>
         {/* Desktop Search */}
         <form

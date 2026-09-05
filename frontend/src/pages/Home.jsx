@@ -15,6 +15,7 @@ import {
   Droplets,
   Scale
 } from 'lucide-react';
+import logo from '../assets/images/logo.jpg';
 
 export default function Dashboard() {
   return (
@@ -28,8 +29,9 @@ export default function Dashboard() {
           <div>
             {/* App Logo */}
             <div className="flex items-center gap-2 mb-8">
-              <span className="text-xl font-bold text-[#1E3A8A] tracking-tight">
-                Smart Health <span className="text-blue-600">&</span> Diet
+              <img src={logo} alt="Smart Health and Diet Recommendation System" className="h-12 w-12 rounded-xl object-cover" />
+              <span className="text-lg font-bold text-[#1E3A8A] tracking-tight">
+                Smart Health &amp; Diet
               </span>
             </div>
 

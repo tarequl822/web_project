@@ -1,202 +1,280 @@
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 import { Link, useNavigate } from "react-router-dom";
-import { registerService } from "../services/auth.services";
+import logo from "../assets/images/logo.jpg";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    full_name: "",
     email: "",
-    role: "student",
+    role: "user",
     password: "",
+    confirm_password: "",
+    terms: false,
   });
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    try {
-      const response = await registerService(formData);
-      console.log("Register response:", response);
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
+    if (formData.password !== formData.confirm_password) {
+      alert("Passwords do not match!");
+      return;
     }
+    if (!formData.terms) {
+      alert("Please accept the Terms of Service & Privacy Policy.");
+      return;
+    }
+
+    navigate("/login");
   };
 
   return (
-    <div className="min-h-screen bg-page dark:bg-Dpage flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      {/* Header */}
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl sm:text-4xl font-extrabold text-t-primary dark:text-Dt-primary">
-          Create Your Account
-        </h2>
-        <p className="mt-2 text-center text-sm sm:text-base text-t-secondary dark:text-Dt-secondary">
-          Fill in the details to get started
-        </p>
-      </div>
+    <div className="bg-[#f9f9ff] text-[#191b23] min-h-screen flex flex-col font-sans">
+      {/* Top Header */}
+      <header className="w-full top-0  bg-transparent flex justify-center items-center h-20 px-8 z-50">
+        <div className="flex items-center gap-3">
+          <img
+            alt="Smart Health Logo"
+            className="w-10 h-10 object-contain"
+            src={logo}
+            />
+          <span className="font-bold text-xl text-[#0058be] tracking-tight">
+            Smart Health &amp; Diet
+          </span>
+        </div>
+      </header>
 
-      {/* Form container */}
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-page dark:bg-Don-primary py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Name fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
+      {/* Main Content Form */}
+      <main className="flex-grow flex items-center justify-center p-4 md:p-8">
+        <div className="bg-white border border-[#c2c6d6] rounded-xl shadow-sm w-full max-w-[560px] overflow-hidden">
+          {/* Progress Bar */}
+          <div className="h-1 w-full bg-[#e1e2ec]">
+            <div className="h-full bg-[#0058be] w-1/4 transition-all duration-500"></div>
+          </div>
+
+          <div className="p-6 md:p-8 space-y-8">
+            <div className="text-center space-y-2">
+              <h1 className="text-2xl md:text-3xl font-bold text-[#191b23]">
+                Create your account
+              </h1>
+              <p className="text-base text-[#424754]">
+                Empowering your journey to clinical-grade wellness.
+              </p>
+            </div>
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Full Name */}
+              <div className="space-y-2">
                 <label
-                  htmlFor="first_name"
-                  className="block text-sm font-medium text-t-primary dark:text-Dt-primary"
+                  className="text-xs text-[#424754] block uppercase font-semibold tracking-wider"
+                  htmlFor="full_name"
                 >
-                  First Name
+                  Full Name
                 </label>
-                <div className="mt-1">
+                <div className="relative">
                   <input
-                    id="first_name"
-                    name="first_name"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#c2c6d6] bg-white text-[#191b23] focus:outline-none focus:border-[#0058be] focus:ring-2 focus:ring-[#0058be]/10 transition-all"
+                    id="full_name"
+                    name="full_name"
+                    placeholder="John Doe"
                     type="text"
-                    autoComplete="given_name"
                     required
+                    value={formData.full_name}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-border dark:border-Dborder rounded-md shadow-sm placeholder-Dt-secondary dark:placeholder-Dt-secondary focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:bg-Don-secondary dark:text-Dt-primary"
                   />
                 </div>
               </div>
-              <div>
+
+              {/* Email Address */}
+              <div className="space-y-2">
                 <label
-                  htmlFor="last_name"
-                  className="block text-sm font-medium text-t-primary dark:text-Dt-primary"
+                  className="text-xs text-[#424754] block uppercase font-semibold tracking-wider"
+                  htmlFor="email"
                 >
-                  Last Name
+                  Email Address
                 </label>
-                <div className="mt-1">
+                <div className="relative">
                   <input
-                    id="last_name"
-                    name="last_name"
-                    type="text"
-                    autoComplete="family_name"
+                    className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#c2c6d6] bg-white text-[#191b23] focus:outline-none focus:border-[#0058be] focus:ring-2 focus:ring-[#0058be]/10 transition-all"
+                    id="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    type="email"
                     required
+                    value={formData.email}
                     onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-border dark:border-Dborder rounded-md shadow-sm placeholder-Dt-secondary dark:placeholder-Dt-secondary focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:bg-Don-secondary dark:text-Dt-primary"
                   />
                 </div>
               </div>
-            </div>
 
-            {/* Email field */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-t-primary dark:text-Dt-primary"
-              >
-                Email Address
-              </label>
-              <div className="mt-1">
+              {/* Custom Radio Cards for Role Selection */}
+              <div className="space-y-2">
+                <label className="text-xs text-[#424754] block uppercase font-semibold tracking-wider">
+                  I am a...
+                </label>
+                <div className="grid grid-cols-2 gap-4">
+                  <label
+                    className={`relative flex flex-col items-center gap-2 p-4 border rounded-lg cursor-pointer transition-colors ${
+                      formData.role === "user"
+                        ? "border-[#0058be] bg-[#d8e2ff]/30"
+                        : "border-[#c2c6d6] hover:bg-[#f2f3fd]"
+                    }`}
+                  >
+                    <input
+                      className="absolute opacity-0"
+                      name="role"
+                      type="radio"
+                      value="user"
+                      checked={formData.role === "user"}
+                      onChange={handleChange}
+                    />
+
+                    <span className="text-sm font-medium text-[#191b23]">
+                      User
+                    </span>
+                  </label>
+
+                  <label
+                    className={`relative flex flex-col items-center gap-2 p-4 border rounded-lg cursor-pointer transition-colors ${
+                      formData.role === "dietitian"
+                        ? "border-[#0058be] bg-[#d8e2ff]/30"
+                        : "border-[#c2c6d6] hover:bg-[#f2f3fd]"
+                    }`}
+                  >
+                    <input
+                      className="absolute opacity-0"
+                      name="role"
+                      type="radio"
+                      value="dietitian"
+                      checked={formData.role === "dietitian"}
+                      onChange={handleChange}
+                    />
+                    <span className="text-sm font-medium text-[#191b23]">
+                      Dietitian
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Password Fields */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label
+                    className="text-xs text-[#424754] block uppercase font-semibold tracking-wider"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <div className="relative">
+                    <input
+                      className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#c2c6d6] bg-white text-[#191b23] focus:outline-none focus:border-[#0058be] focus:ring-2 focus:ring-[#0058be]/10 transition-all"
+                      id="password"
+                      name="password"
+                      placeholder="••••••••"
+                      type="password"
+                      required
+                      value={formData.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label
+                    className="text-xs text-[#424754] block uppercase font-semibold tracking-wider"
+                    htmlFor="confirm_password"
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="relative">
+                    <input
+                      className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#c2c6d6] bg-white text-[#191b23] focus:outline-none focus:border-[#0058be] focus:ring-2 focus:ring-[#0058be]/10 transition-all"
+                      id="confirm_password"
+                      name="confirm_password"
+                      placeholder="••••••••"
+                      type="password"
+                      required
+                      value={formData.confirm_password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Terms & Conditions Checkbox */}
+              <div className="flex items-start gap-3">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
+                  className="mt-1 rounded border-[#c2c6d6] text-[#0058be] focus:ring-[#0058be]"
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                  checked={formData.terms}
                   onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-border dark:border-Dborder rounded-md shadow-sm placeholder-Dt-secondary dark:placeholder-Dt-secondary focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:bg-Don-secondary dark:text-Dt-primary"
                 />
+                <label className="text-sm text-[#424754]" htmlFor="terms">
+                  I agree to the{" "}
+                  <a className="text-[#0058be] hover:underline" href="#terms">
+                    Terms of Service
+                  </a>{" "}
+                  and{" "}
+                  <a className="text-[#0058be] hover:underline" href="#privacy">
+                    Privacy Policy
+                  </a>
+                  .
+                </label>
               </div>
-            </div>
 
-            {/* Password field */}
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-t-primary dark:text-Dt-primary"
-              >
-                Password
-              </label>
-              <div className="mt-1 relative">
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  required
-                  onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-border dark:border-Dborder rounded-md shadow-sm placeholder-Dt-secondary dark:placeholder-Dt-secondary focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:bg-Don-secondary dark:text-Dt-primary"
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-500 dark:text-gray-300 dark:hover:text-gray-200"
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
-              </div>
-            </div>
-
-            {/* Role field */}
-            <div>
-              <label
-                htmlFor="role"
-                className="block text-sm font-medium text-t-primary dark:text-Dt-primary"
-              >
-                Role
-              </label>
-              <div className="mt-1">
-                <select
-                  id="role"
-                  name="role"
-                  value={formData.role}
-                  onChange={handleChange}
-                  className="block w-full px-3 py-2 border border-border dark:border-Dborder bg-white dark:bg-Don-secondary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:text-Dt-primary"
-                >
-                  <option value="student">Student</option>
-                  <option value="faculty">Faculty</option>
-                  <option value="alumni">Alumni</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Register button */}
-            <div>
+              {/* Submit Button */}
               <button
                 type="submit"
-                disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:bg-secondary"
+                className="w-full bg-[#0058be] hover:bg-[#004395] text-white py-3 rounded-lg font-medium transition-all active:scale-[0.98] shadow-md hover:shadow-lg flex justify-center items-center gap-2 disabled:opacity-70"
               >
-                {isLoading ? (
-                  <span className="spinner-border animate-spin border-2 border-t-2 border-white w-6 h-6 rounded-full"></span>
-                ) : (
-                  "Register"
-                )}
+                Register
               </button>
-            </div>
-          </form>
+            </form>
 
-          {/* Login link */}
-          <div className="mt-6">
-            <p className="text-center text-sm text-t-primary dark:text-Dt-primary">
-              Already registered?{" "}
-              <Link
-                to="/login"
-                className="font-medium text-primary hover:text-secondary"
-              >
-                Sign in
-              </Link>
-            </p>
+            {/* Login Navigation Link */}
+            <div className="pt-4 border-t border-[#c2c6d6] text-center">
+              <p className="text-sm text-[#424754]">
+                Already have an account?{" "}
+                <Link
+                  className="text-[#0058be] font-semibold hover:underline transition-colors"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full mt-auto py-6 px-8 max-w-[1440px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-[#424754]">
+            © {new Date().getFullYear()} Smart Health &amp; Diet Recommendation System. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <a className="text-sm text-[#424754] hover:text-[#0058be] transition-colors" href="#terms">
+              Terms
+            </a>
+            <a className="text-sm text-[#424754] hover:text-[#0058be] transition-colors" href="#privacy">
+              Privacy
+            </a>
+            <a className="text-sm text-[#424754] hover:text-[#0058be] transition-colors" href="#accessibility">
+              Accessibility
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

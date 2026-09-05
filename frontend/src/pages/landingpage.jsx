@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Activity, Heart, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/images/logo.jpg';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -22,9 +23,7 @@ export default function LandingPage() {
         {/* Brand Logo & Tag */}
         <div className="mb-6 flex flex-col items-center gap-3">
           <div className="p-3 bg-white/80 backdrop-blur-md rounded-2xl shadow-md border border-slate-100 flex items-center justify-center group hover:scale-105 transition-transform duration-300">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
-              <Activity className="w-7 h-7" />
-            </div>
+            <img src={logo} alt="Smart Health and Diet Recommendation System" className="w-24 h-24 rounded-xl object-cover" />
           </div>
           <span className="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-100/60 px-3 py-1 rounded-full border border-blue-200/50">
             Smart Health Platform

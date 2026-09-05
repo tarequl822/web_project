@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/images/logo.jpg";
 
 // Authentication - keep for later
 // import { useAuth } from "../context/authContext";npm
@@ -89,9 +90,11 @@ const Login = () => {
 
         {/* Logo / Brand */}
         <div className="text-center mb-8">
-          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white text-xl font-bold shadow-lg">
-            L
-          </div>
+          <img
+            src={logo}
+            alt="Smart Health and Diet Recommendation System"
+            className="mx-auto mb-5 h-20 w-20 rounded-2xl object-cover shadow-lg"
+          />
 
           <h1 className="text-3xl sm:text-4xl font-bold text-t-primary dark:text-Dt-primary">
             Welcome Back
@@ -295,7 +298,7 @@ const Login = () => {
 
         {/* Footer */}
         <p className="mt-6 text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} Your Application. All rights reserved.
+          © {new Date().getFullYear()} Smart Health & Diet Recommendation System. All rights reserved.
         </p>
       </div>
     </div>
