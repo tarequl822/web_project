@@ -1,0 +1,58 @@
+{
+  "id": "SH-99201-AX",
+  "name": "Alex Rivers",
+  "status": "ACTIVE PATIENT",
+  "age": 34,
+  "email": "alex.rivers@example.com",
+  "bmi": {
+    "value": 24.2,
+    "status": "Healthy",
+    "range": "18.5 - 24.9 (Normal)"
+  },
+  "avgCalories": {
+    "value": 1840,
+    "target": 1770,
+    "percentage": "4% above target"
+  },
+  "weight": {
+    "current": 82.5,
+    "unit": "kg",
+    "change": "0.8 kg lost this week"
+  },
+  "medicalHistory": {
+    "allergies": ["Lactose", "Shellfish"],
+    "bloodType": "A Positive (A+)",
+    "conditions": ["Type 2 Diabetes (Managed)", "Mild Hypertension"]
+  },
+  "recentMeals": [
+    {
+      "id": 1,
+      "name": "Quinoa Salad",
+      "mealType": "Lunch",
+      "calories": 420,
+      "protein": "18g",
+      "carbs": "54g"
+    },
+    {
+      "id": 2,
+      "name": "Grilled Salmon",
+      "mealType": "Dinner",
+      "calories": 610,
+      "protein": "42g",
+      "carbs": "12g"
+    }
+  ],
+  "lifestyle": {
+    "sleepAvg": "7.2h",
+    "waterAvg": "2.4L"
+  },
+  "calorieIntakeVsTarget": [
+    { "day": "Monday", "intake": 1850, "target": 1800, "barColor": "bg-blue-600" },
+    { "day": "Tuesday", "intake": 1720, "target": 1800, "barColor": "bg-emerald-600" },
+    { "day": "Wednesday", "intake": 1910, "target": 1800, "barColor": "bg-blue-600" }
+  ],
+  "clinicalNotes": {
+    "latestRecommendation": "Patient is responding well to high-protein intake but needs to increase daily fiber. Monitor sodium levels closely due to blood pressure fluctuations during evening hours.",
+    "lastUpdated": "Aug 28, 2026"
+  }
+}

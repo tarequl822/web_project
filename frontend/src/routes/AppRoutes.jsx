@@ -16,6 +16,7 @@ import Placeholder from "../pages/admin/Placeholder";
 
 // Dietitian Pages
 import DietitianDashboard from "../pages/dietitian/Dashboard";
+import PatientRecords from "../pages/dietitian/Patients"; // Import Patient Records page
 
 const AppRoutes = () => {
   return (
@@ -52,8 +53,9 @@ const AppRoutes = () => {
 
       {/* Dietitian Routes */}
       <Route path="/dietitian/dashboard" element={<DietitianDashboard />} />
+      <Route path="/dietitian/patients" element={<PatientRecords />} />
 
-      {/* Fallback Catch-all Route */}
+      {/* Fallback Route */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
