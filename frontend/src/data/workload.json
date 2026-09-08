@@ -1,0 +1,4 @@
+{
+  "clinicalSessions": { "current": 32, "target": 40, "unit": "hrs" },
+  "mealPlanReviews": { "current": 18, "target": 20, "unit": "reviews" }
+}
