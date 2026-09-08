@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "patientName": "Alex Rivers",
+    "avatar": "AR",
+    "patientId": "SH-99201-AX",
+    "lastMessage": "Got it. I'll download that now. Also, here is the scan...",
+    "time": "10:20 AM",
+    "unreadCount": 0,
+    "online": true
+  },
+  {
+    "id": 2,
+    "patientName": "Michael Scott",
+    "avatar": "MS",
+    "patientId": "SH-99202-MS",
+    "lastMessage": "The lab results look much better this month.",
+    "time": "Yesterday",
+    "unreadCount": 1,
+    "online": false
+  },
+  {
+    "id": 3,
+    "patientName": "Elena Rodriguez",
+    "avatar": "ER",
+    "patientId": "SH-99203-ER",
+    "lastMessage": "Don't forget our check-up call on Friday at 10 AM.",
+    "time": "Tue",
+    "unreadCount": 0,
+    "online": true
+  }
+]
