@@ -1,0 +1,65 @@
+[
+  {
+    "id": "f1",
+    "name": "Greek Yogurt with Berries",
+    "portion": "150g Yogurt, 50g Blueberries",
+    "calories": 245,
+    "protein": 18,
+    "carbs": 28,
+    "fats": 5
+  },
+  {
+    "id": "f2",
+    "name": "Avocado on Toast",
+    "portion": "1 slice sourdough, 1/2 avocado",
+    "calories": 280,
+    "protein": 6,
+    "carbs": 24,
+    "fats": 18
+  },
+  {
+    "id": "f3",
+    "name": "Grilled Chicken & Quinoa",
+    "portion": "120g Chicken, 1 cup Quinoa",
+    "calories": 410,
+    "protein": 35,
+    "carbs": 42,
+    "fats": 8
+  },
+  {
+    "id": "f4",
+    "name": "Steamed Edamame",
+    "portion": "1 cup in pods",
+    "calories": 120,
+    "protein": 11,
+    "carbs": 9,
+    "fats": 5
+  },
+  {
+    "id": "f5",
+    "name": "Green Super Smoothie",
+    "portion": "350ml spinach, apple, protein",
+    "calories": 165,
+    "protein": 12,
+    "carbs": 32,
+    "fats": 2
+  },
+  {
+    "id": "f6",
+    "name": "Steel Cut Oats",
+    "portion": "1 cup cooked with cinnamon",
+    "calories": 210,
+    "protein": 7,
+    "carbs": 38,
+    "fats": 4
+  },
+  {
+    "id": "f7",
+    "name": "Mixed Chickpea Salad",
+    "portion": "200g chickpeas, cucumbers, olive oil",
+    "calories": 320,
+    "protein": 15,
+    "carbs": 40,
+    "fats": 10
+  }
+]

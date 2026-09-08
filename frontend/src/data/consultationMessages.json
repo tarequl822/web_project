@@ -1,0 +1,80 @@
+{
+  "1": [
+    {
+      "id": 101,
+      "sender": "dietitian",
+      "text": "Hello Alex! I've reviewed your latest dietary log and blood work results. Everything is trending in the right direction.",
+      "time": "10:14 AM"
+    },
+    {
+      "id": 102,
+      "sender": "patient",
+      "text": "That's great news! I've been feeling much more energetic lately. Should I continue with the current supplement regimen?",
+      "time": "10:15 AM"
+    },
+    {
+      "id": 103,
+      "sender": "dietitian",
+      "text": "Yes, let's keep the supplements. However, I want to slightly adjust your Vitamin D dosage based on the new results. I've generated a new digital prescription below.",
+      "time": "10:17 AM"
+    },
+    {
+      "id": 104,
+      "sender": "patient",
+      "text": "Got it. I'll download that now. Also, here is the scan of the allergy test results I mentioned.",
+      "time": "10:20 AM"
+    }
+  ],
+  "2": [
+    {
+      "id": 201,
+      "sender": "patient",
+      "text": "Hi Dr. Mitchell, I just uploaded my fasting blood glucose logs from this past week.",
+      "time": "09:45 AM"
+    },
+    {
+      "id": 202,
+      "sender": "dietitian",
+      "text": "Thanks Michael! I see your fasting glucose averaged 110 mg/dL, which is a solid improvement from last month.",
+      "time": "10:02 AM"
+    },
+    {
+      "id": 203,
+      "sender": "patient",
+      "text": "That's a relief! Reducing refined carbohydrates during dinner really made a difference.",
+      "time": "10:10 AM"
+    },
+    {
+      "id": 204,
+      "sender": "dietitian",
+      "text": "The lab results look much better this month. Keep up with the post-dinner 15-minute walks as well!",
+      "time": "10:15 AM"
+    }
+  ],
+  "3": [
+    {
+      "id": 301,
+      "sender": "dietitian",
+      "text": "Hi Elena, checking in on your transition to the low-sodium diet plan. How are you adjusting?",
+      "time": "02:15 PM"
+    },
+    {
+      "id": 302,
+      "sender": "patient",
+      "text": "It was tricky at first without added salt, but using fresh herbs and lemon juice has made a huge difference!",
+      "time": "02:30 PM"
+    },
+    {
+      "id": 303,
+      "sender": "dietitian",
+      "text": "That's a brilliant strategy! Your morning blood pressure readings should start stabilizing nicely.",
+      "time": "02:35 PM"
+    },
+    {
+      "id": 304,
+      "sender": "dietitian",
+      "text": "Don't forget our check-up call on Friday at 10 AM.",
+      "time": "02:38 PM"
+    }
+  ]
+}
