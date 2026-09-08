@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "initials": "AR",
+    "name": "Alice Richardson",
+    "status": "ACTIVE",
+    "lastReport": "Oct 24, 2023",
+    "primaryGoal": "Weight Loss"
+  },
+  {
+    "id": 102,
+    "initials": "MB",
+    "name": "Marcus Bennett",
+    "status": "REVIEWING",
+    "lastReport": "Oct 22, 2023",
+    "primaryGoal": "Muscle Gain"
+  },
+  {
+    "id": 103,
+    "initials": "SL",
+    "name": "Sophie Laurent",
+    "status": "INACTIVE",
+    "lastReport": "Sept 15, 2023",
+    "primaryGoal": "Gut Health"
+  }
+]

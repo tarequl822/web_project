@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "time": "09:30 AM",
+    "patientName": "James Wilson",
+    "type": "Initial Consultation",
+    "mode": "Video"
+  },
+  {
+    "id": 2,
+    "time": "11:15 AM",
+    "patientName": "Elena Rodriguez",
+    "type": "Follow-up",
+    "mode": "In-Person"
+  }
+]
